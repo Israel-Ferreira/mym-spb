@@ -31,4 +31,11 @@ public enum DebitStatus {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
+    public static DebitStatus getEnum(String description){
+        return Arrays.stream(DebitStatus.values())
+                .filter(debitStatus -> debitStatus.getDescription().equals(description))
+                .findFirst().orElseThrow();
+    }
 }

@@ -37,6 +37,11 @@
 			<artifactId>springfox-boot-starter</artifactId>
 			<version>3.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>io.github.kaiso.relmongo</groupId>
+			<artifactId>relmongo</artifactId>
+			<version>3.4.1</version>
+		</dependency>
 
 
 		<dependency>

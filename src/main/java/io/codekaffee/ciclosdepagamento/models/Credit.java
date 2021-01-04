@@ -18,7 +18,7 @@ import javax.validation.constraints.Min;
 public class Credit {
 
     @MongoId(FieldType.OBJECT_ID)
-    private ObjectId id;
+    private String id;
 
     private String name;
 

@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 @NoArgsConstructor
 public class Debit {
     @MongoId(FieldType.OBJECT_ID)
-    private ObjectId id;
+    private String id;
 
     private String name;
 
@@ -31,6 +31,6 @@ public class Debit {
     public Debit(DebitDTO dto){
         this.name = dto.getName();
         this.value = dto.getValue();
-        this.status = DebitStatus.valueOf(dto.getStatus());
+        this.status = DebitStatus.getEnum(dto.getStatus());
     }
 }

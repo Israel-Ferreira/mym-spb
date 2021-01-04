@@ -1,6 +1,7 @@
 package io.codekaffee.ciclosdepagamento.controllers;
 
 import io.codekaffee.ciclosdepagamento.dto.BillingCycleDTO;
+import io.codekaffee.ciclosdepagamento.dto.UpdateBillingCycleDTO;
 import io.codekaffee.ciclosdepagamento.models.BillingCycle;
 import io.codekaffee.ciclosdepagamento.repositories.BillingCycleRepository;
 import io.codekaffee.ciclosdepagamento.services.BillingCycleService;
@@ -39,7 +40,7 @@ public class BillingCycleController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<BillingCycleDTO> getById(@PathVariable ObjectId id){
+    public ResponseEntity<BillingCycleDTO> getById(@PathVariable String id){
         BillingCycle bc = billingCycleService.findById(id);
         var billingCycle = new BillingCycleDTO(bc);
 
@@ -47,6 +48,27 @@ public class BillingCycleController {
     }
 
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable String id){
+        billingCycleService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
+    @DeleteMapping("/selected")
+    public ResponseEntity<Void> deleteSelected(@RequestParam List<String> ids){
+        billingCycleService.deleteAll(ids);
+        return ResponseEntity.noContent().build();
+    }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<BillingCycleDTO>  update(@PathVariable String id, @RequestBody UpdateBillingCycleDTO billingCycleDTO){
+        BillingCycle billingCycle = this.billingCycleService.update(id, billingCycleDTO);
+        BillingCycleDTO response = new BillingCycleDTO(billingCycle);
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
 
 
 

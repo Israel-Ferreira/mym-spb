@@ -13,11 +13,12 @@ import org.bson.types.ObjectId;
 @AllArgsConstructor
 public class CreditDTO {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private ObjectId id;
+    private String id;
 
     private String name;
     private Double value;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String billingCycleId;
 
     public CreditDTO(Credit credit){
